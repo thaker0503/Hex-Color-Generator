@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hex Color - linear Gradient Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <!-- <h1>Randow Linear Gradient Generator</h1> -->
+    <div class="container">
+        
+        <div id="linear">
+            <h1>Click the button bellow to generate a random gradient hex color combination</h1>
+            <h2>background: linear gradient from left #<span id="hex1">ffffff</span>, to right #<span id="hex2">ffffff</span>
+            </h2>
+            <button id="submit" onclick="linearGradient()" class="btn btn-light">Click Me</button>
+          </div>
+    </div>
+    
+
+    <script>
+        function linearGradient(){
+            let hex_numbers = ["0","1","2","3","4","5","6","7","8","9","A", "B", "C", "D", "E", "F"];
+            let hex1 = "";
+            let hex2 = "";
+            let x = 0;
+            
+            for(let i = 0; i < 6;i++){
+                x = Math.floor(Math.random() * hex_numbers.length);
+                hex1 += hex_numbers[x];
+                x = Math.floor(Math.random() * hex_numbers.length);
+                hex2 += hex_numbers[x];
+            }
+
+            document.body.style.background = `linear-gradient(to right, #${hex1}, #${hex2})`;
+            document.querySelector("#hex1").textContent = hex1;
+            document.querySelector("#hex2").textContent = hex2;
+        }
+    </script>
+</body>
+</html>
